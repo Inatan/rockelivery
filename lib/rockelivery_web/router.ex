@@ -7,6 +7,9 @@ defmodule RockeliveryWeb.Router do
 
   scope "/api", RockeliveryWeb do
     pipe_through :api
+
+    get "/", WelcomeController, :index
+    resources "/users/", UserController, except: [:new, :edit]
   end
 
   if Mix.env() in [:dev, :test] do
